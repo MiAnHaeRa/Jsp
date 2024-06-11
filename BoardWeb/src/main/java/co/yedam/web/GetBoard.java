@@ -1,0 +1,28 @@
+package co.yedam.web;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import co.yedam.common.Control;
+import co.yedam.service.BoardService;
+import co.yedam.service.BoardServiceImpl;
+import co.yedam.vo.BoardVO;
+
+public class GetBoard implements Control {
+
+	@Override
+	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		BoardService svc = new BoardServiceImpl();
+		req.setCharacterEncoding("UTF-8");
+		System.out.println(req.getParameter("boardNo"));
+		BoardVO bvo = svc.getBoard((int)req.getAttribute("boardNo"));
+		
+		req.setAttribute("bvo", bvo);
+		
+		req.getRequestDispatcher("WEB-INF/view/getBoard.jsp").forward(req, resp);
+	}
+
+}

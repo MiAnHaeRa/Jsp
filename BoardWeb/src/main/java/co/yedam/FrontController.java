@@ -10,10 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Control;
+import co.yedam.web.AddBoard;
 import co.yedam.web.AddStudent;
 import co.yedam.web.BoardList;
+import co.yedam.web.GetBoard;
 import co.yedam.web.MainControl;
+import co.yedam.web.ModifyBoard;
 import co.yedam.web.ProductControl;
+import co.yedam.web.RemoveBoard;
 import co.yedam.web.StudentForm;
 
 // front -> 요청url(*.do) - 실행컨트롤 매칭
@@ -35,7 +39,12 @@ public class FrontController extends HttpServlet {
 		map.put("/addStudent.do", new AddStudent());	//db에 정보 저장
 		
 		//게시글 목록
-		map.put("/boardList.do", new BoardList());
+		map.put("/boardList.do", new BoardList());		//목록
+		map.put("/getBoard.do", new GetBoard());		//단권조회
+		map.put("/addBoard.do", new AddBoard());		//추가
+		map.put("/modifyBoard.do", new ModifyBoard());	//업데이트
+		map.put("/removeBoard.do", new RemoveBoard());	//삭제
+		
 	}
 	
 	@Override

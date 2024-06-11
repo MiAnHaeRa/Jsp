@@ -19,14 +19,17 @@
 		</tr>
 	</thead>
 	<tbody>
-		<%for(BoardVO vo : list) { %>
 		<tr>
+			<td>
+		</tr>
+		<%for(BoardVO vo : list) { %>
+		<tr><a href="./getBoard.do?boardNo=<%=vo.getBoardNo() %>">
 			<td><%=vo.getBoardNo() %></td>
 			<td><%=vo.getTitle() %></td>
 			<td><%=vo.getWriter() %></td>
 			<td><%=vo.getClickCnt() %></td>
-		</tr>
-		<%} %>	
+		</a></tr>
+		<%} %>
 	</tbody>
 </table>
 
