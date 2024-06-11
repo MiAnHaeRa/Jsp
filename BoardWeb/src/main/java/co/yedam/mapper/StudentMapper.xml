@@ -3,34 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="co.yedam.mapper.StudentMapper">
-
-  <select id="selectBlog" resultType="co.yedam.vo.Student">
-    select * 
-	from tbl_student
-	order by std_no
-  </select>
-  
-  <select id="getStudent" parameterType="String" resultType="co.yedam.vo.Student">
-  	select *
-  	from tbl_student
-  	where std_no = #{stdNo}
-  </select>
-  
-  <insert id="insertStudent" parameterType="co.yedam.vo.Student">
-  	insert into tbl_student (std_no, std_name, phone, bld_type)
-  	values (#{stdNo}, #{stdName}, #{phone}, #{bldType})
-  </insert>
-  
-  <update id="updateStudentPhone" parameterType="co.yedam.vo.Student">
-  	update tbl_student
-  	set phone = #{phone}
-  	where std_no = #{stdNo}
-  </update>
-  
-  <delete id="deleteStudent" parameterType="co.yedam.vo.Student">
-  	delete tbl_student
-  	where std_no = #{stdNo}
-  </delete>
-  
+<mapper namespace="co.yedam.mapper.BoardMapper">
+	<select id="boardList" resultType="co.yedam.vo.BoardVO">
+		select board_no, title, content, writer, click_cnt, creation_date 
+		from board_tbl
+	</select>
 </mapper>

@@ -21,7 +21,7 @@
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="main.do">메인페이지</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="StudentForm.do">학생정보등록</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">자유게시판</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="boardList.do">자유게시판</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
