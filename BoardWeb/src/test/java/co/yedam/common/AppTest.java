@@ -28,18 +28,18 @@ public class AppTest {
 //		sqlSession.insert("co.yedam.mapper.StudentMapper.insertStudent", std);
 		
 		//update
-		std.setStdNo("S0102");
+		std.setStdNo("S0002");
 		std.setPhone("010-9191-7878");
 //		
 //		sqlSession.update("co.yedam.mapper.StudentMapper.updateStudentPhone", std);
-		mapper.updateStudentPhone(std);
+//		mapper.updateStudentPhone(std);
 		
 		//delete
 //		std.setStdNo("S1001");
 //		sqlSession.delete("co.yedam.mapper.StudentMapper.deleteStudent", std);
 		
 		mapper.deleteStudent(std);
-		sqlSession.commit();
+//		sqlSession.commit();
 		
 //		List<Student> list = sqlSession.selectList("co.yedam.mapper.StudentMapper.selectBlog");
 		List<Student> list = mapper.selectBlog();

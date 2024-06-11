@@ -2,13 +2,8 @@
 <%@page import="co.yedam.vo.Student"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@include file="header.jsp" %>
+
 	<h3>Main 페이지</h3>
 	<%
 		Student student =(Student)request.getAttribute("student");
@@ -33,5 +28,4 @@
 		<button type="submit">조회</button>
 	</form>
 	
-</body>
-</html>
+<%@include file="footer.jsp" %>
