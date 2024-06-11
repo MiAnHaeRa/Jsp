@@ -11,6 +11,12 @@
 	order by std_no
   </select>
   
+  <select id="getStudent" parameterType="String" resultType="co.yedam.vo.Student">
+  	select *
+  	from tbl_student
+  	where std_no = #{stdNo}
+  </select>
+  
   <insert id="insertStudent" parameterType="co.yedam.vo.Student">
   	insert into tbl_student (std_no, std_name, phone, bld_type)
   	values (#{stdNo}, #{stdName}, #{phone}, #{bldType})
