@@ -10,15 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Control;
-import co.yedam.web.AddBoard;
+import co.yedam.web.AddBoardForm;
 import co.yedam.web.AddStudent;
 import co.yedam.web.BoardList;
 import co.yedam.web.GetBoard;
 import co.yedam.web.MainControl;
 import co.yedam.web.ModifyBoard;
+import co.yedam.web.ModifyBoardForm;
 import co.yedam.web.ProductControl;
 import co.yedam.web.RemoveBoard;
 import co.yedam.web.StudentForm;
+import co.yedam.web.InsertBoard;
 
 // front -> 요청url(*.do) - 실행컨트롤 매칭
 // main.do -> FrontController -> /WEB-INF/public/main.jsp
@@ -41,8 +43,10 @@ public class FrontController extends HttpServlet {
 		//게시글 목록
 		map.put("/boardList.do", new BoardList());		//목록
 		map.put("/getBoard.do", new GetBoard());		//단권조회
-		map.put("/addBoard.do", new AddBoard());		//추가
-		map.put("/modifyBoard.do", new ModifyBoard());	//업데이트
+		map.put("/addForm.do", new AddBoardForm());		//추가
+		map.put("/insertBoard.do", new InsertBoard());
+		map.put("/modifyBoardForm.do", new ModifyBoardForm());	//업데이트
+		map.put("/modifyBoard.do", new ModifyBoard());
 		map.put("/removeBoard.do", new RemoveBoard());	//삭제
 		
 	}

@@ -23,12 +23,22 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public List<BoardVO> boardListPaging(int page) {
+		return mapper.boardListPaging(page);
+	}
+
+	@Override
+	public int boardTotal() {
+		return mapper.getTotalCnt();
+	}
+	
+	@Override
 	public BoardVO getBoard(int bno) {
 		return mapper.selectBoard(bno);
 	}
 
 	@Override
-	public boolean addBoard(BoardVO bvo) {
+	public boolean insertBoard(BoardVO bvo) {
 		return mapper.insertBoard(bvo) == 1;
 	}
 
@@ -41,5 +51,4 @@ public class BoardServiceImpl implements BoardService{
 	public boolean removeBoard(int bno) {
 		return mapper.deleteBoard(bno) == 1;
 	}
-
 }

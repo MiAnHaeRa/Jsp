@@ -35,13 +35,12 @@ public class AddStudent implements Control {
 		
 		if(svc.addStudent(std)) {
 			System.out.println("정상등록...");
-			resp.sendRedirect("main.do");
 		} else {
 			req.setAttribute("message", "처리중 오류가 발생");
 			System.out.println("등록실패...");
-			req.getRequestDispatcher("WEB-INF/view/studentForm.jsp").forward(req, resp);
 		}
-		
+
+		resp.sendRedirect("boardList.do");
 
 	}
 

@@ -9,8 +9,10 @@ import co.yedam.vo.BoardVO;
  */
 public interface BoardService {
 	List<BoardVO> boardList();
+	List<BoardVO> boardListPaging(int page);
+	int boardTotal();
 	BoardVO getBoard(int bno);
-	boolean addBoard(BoardVO bvo);
+	boolean insertBoard(BoardVO bvo);
 	boolean editBoard(BoardVO bvo);
 	boolean removeBoard(int bno);
 }

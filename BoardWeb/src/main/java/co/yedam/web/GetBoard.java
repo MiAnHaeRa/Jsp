@@ -17,12 +17,11 @@ public class GetBoard implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		BoardService svc = new BoardServiceImpl();
 		req.setCharacterEncoding("UTF-8");
-		System.out.println(req.getParameter("boardNo"));
-		BoardVO bvo = svc.getBoard((int)req.getAttribute("boardNo"));
+		BoardVO bvo = svc.getBoard(Integer.parseInt(req.getParameter("boardNo")));
 		
 		req.setAttribute("bvo", bvo);
 		
-		req.getRequestDispatcher("WEB-INF/view/getBoard.jsp").forward(req, resp);
+		req.getRequestDispatcher("WEB-INF/view/board.jsp").forward(req, resp);
 	}
 
 }

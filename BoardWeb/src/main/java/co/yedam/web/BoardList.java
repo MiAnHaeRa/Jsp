@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Control;
+import co.yedam.common.PageDTO;
 import co.yedam.service.BoardService;
 import co.yedam.service.BoardServiceImpl;
 import co.yedam.vo.BoardVO;
@@ -19,10 +20,19 @@ public class BoardList implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String page = req.getParameter("page");
+		page = page == null ? "1" : page;
+		
 		BoardService svc = new BoardServiceImpl();
-		List<BoardVO> list = svc.boardList();
+		List<BoardVO> list = svc.boardListPaging(Integer.parseInt(page));
 		
 		req.setAttribute("boardList", list);
+		req.setAttribute("page", page);
+		
+		//paging 계산
+		int totalCnt = svc.boardTotal();
+		PageDTO dto = new PageDTO(Integer.parseInt(page), totalCnt);
+		req.setAttribute("paging", dto);
 		
 		req.getRequestDispatcher("WEB-INF/view/boardList.jsp").forward(req, resp);
 	}
