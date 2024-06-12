@@ -19,6 +19,7 @@ import co.yedam.web.ModifyBoard;
 import co.yedam.web.ModifyBoardForm;
 import co.yedam.web.ProductControl;
 import co.yedam.web.RemoveBoard;
+import co.yedam.web.RemoveBoardForm;
 import co.yedam.web.StudentForm;
 import co.yedam.web.InsertBoard;
 
@@ -48,6 +49,7 @@ public class FrontController extends HttpServlet {
 		map.put("/modifyBoardForm.do", new ModifyBoardForm());	//업데이트
 		map.put("/modifyBoard.do", new ModifyBoard());
 		map.put("/removeBoard.do", new RemoveBoard());	//삭제
+		map.put("/removeBoardForm.do", new RemoveBoardForm());	
 		
 	}
 	

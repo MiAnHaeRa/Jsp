@@ -27,10 +27,8 @@ String nowpage = request.getParameter("page");
 		<th>등록일시</th><td colspan="3" class="col-sm-3"><%=yyyymmdd %></td>
 	</tr>
 	<tr>
-		<td><button type="button" class="btn btn-primary" onclick="location.href='boardList.do?page=<%=nowpage %>'">목록가기</button></td>
-		<td><button type="button" class="btn btn-primary" onclick="location.href='modifyBoardForm.do?bno=<%=bvo.getBoardNo() %>'">수정하기</button></td>
+		<td colspan="2"><button type="button" class="btn btn-primary" onclick="location.href='boardList.do?page=<%=nowpage %>'">목록으로 돌아가기</button></td>
 		<td><button type="button" class="btn btn-primary" onclick="removeBoard()">바로삭제</button></td>
-		<td><button type="button" class="btn btn-primary" onclick="location.href='removeBoardForm.do?bno=<%=bvo.getBoardNo() %>&page=<%=nowpage %>'">삭제화면</button></td>
 	</tr>
 </table>
 <script type="text/javascript">
