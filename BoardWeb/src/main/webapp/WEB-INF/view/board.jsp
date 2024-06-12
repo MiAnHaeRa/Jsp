@@ -7,6 +7,7 @@
 BoardVO bvo = (BoardVO) request.getAttribute("bvo");
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy년MM월dd일 HH시mm분ss초");
 String yyyymmdd = sdf.format(bvo.getCreationDate());
+String nowpage = request.getParameter("page");
 %>
 <table class="table" border="1" style="width:800px">
 	<tr>
@@ -26,7 +27,7 @@ String yyyymmdd = sdf.format(bvo.getCreationDate());
 		<th>등록일시</th><td colspan="3" class="col-sm-3"><%=yyyymmdd %></td>
 	</tr>
 	<tr>
-		<td colspan="2"><button type="button" class="btn btn-primary" onclick="location.href='boardList.do'">목록으로 돌아가기</button></td>
+		<td colspan="2"><button type="button" class="btn btn-primary" onclick="location.href='boardList.do?page=<%=nowpage %>'">목록으로 돌아가기</button></td>
 		<td><button type="button" class="btn btn-primary" onclick="location.href='modifyBoardForm.do?bno=<%=bvo.getBoardNo() %>'">수정하기</button></td>
 		<td><button id="removeByn" type="button" class="btn btn-primary" onclick="removeBoard()">삭제하기</button></td>
 	</tr>
