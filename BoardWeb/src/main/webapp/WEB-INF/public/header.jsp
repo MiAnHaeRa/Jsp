@@ -14,17 +14,27 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
+    	<%
+    		String logId = (String)session.getAttribute("logId");
+    	%>
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
+            	<%if(logId == null) { %>
+                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap<br>(Guest)</div>
+               	<%} else {%>
+                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap<br>(<%=logId %>)</div>
+                <%} %>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="main.do">메인페이지</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="StudentForm.do">학생정보등록</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="boardList.do">자유게시판</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
+                    <%if(logId == null) {%>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="loginForm.do">로그인</a>
+                    <%} else { %>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logout.do">로그아웃</a>
+                    <%} %>
                 </div>
             </div>
             <!-- Page content wrapper-->

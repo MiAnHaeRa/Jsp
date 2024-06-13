@@ -311,6 +311,7 @@ svg {
 table {
   caption-side: bottom;
   border-collapse: collapse;
+  text-align: center;
 }
 
 caption {
@@ -10862,4 +10863,17 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     margin-left: -15rem;
   }
+}
+
+
+#Btns {
+  height : 40px;
+  display: block;
+  position: relative;
+  width: 100%;
+}
+#Btns > button {
+  position : absolute;
+  display: inline-block;
+  right: 20px;
 }

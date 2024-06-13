@@ -4,14 +4,19 @@
 <%@include file="../public/header.jsp"%>
 <%
 BoardVO bvo = (BoardVO) request.getAttribute("bvo");
+String nowpage = request.getParameter("page");
 %>
 <form action="modifyBoard.do" method="post" style="width:800px;">
+<input type="hidden" name="page" value="<%=nowpage %>">
+<input type="hidden" name="boardNo" value="<%=bvo.getBoardNo()%>">
+<input type="hidden" name="clickCnt" value="<%=bvo.getClickCnt()%>" >
+
 	<table class="table" border="1">
 		<tr>
-			<th>글번호</th>
-			<td><input type="text" name="boardNo" value="<%=bvo.getBoardNo()%>" readonly style="width:100%"></td>
-			<th>조회수</th>
-			<td><input type="text" name="clickCnt" value="<%=bvo.getClickCnt()%>" readonly style="width:100%"></td>
+			<th class="col-sm-1">글번호</th>
+			<td class="col-sm-1"><%=bvo.getBoardNo()%></td>
+			<th class="col-sm-1">조회수</th>
+			<td class="col-sm-1"><%=bvo.getClickCnt()%></td>
 		</tr>
 		<tr>
 			<th>제목</th>
@@ -19,7 +24,7 @@ BoardVO bvo = (BoardVO) request.getAttribute("bvo");
 				value="<%=bvo.getTitle()%>" style="width:100%"></td>
 		</tr>
 		<tr>
-			<th>글쓴이</th>
+			<th>작성자</th>
 			<td colspan="3"><input name="writer" type="text"
 				value="<%=bvo.getWriter()%>" style="width:100%"></td>
 		</tr>
@@ -29,9 +34,9 @@ BoardVO bvo = (BoardVO) request.getAttribute("bvo");
 		</tr>
 
 		<tr>
-			<td><button type="button" class="btn btn-primary"
-					onclick="location.href='boardList.do'">목록으로 돌아가기</button></td>
-			<td><button type="submit" class="btn btn-primary">수정하기</button></td>
+			<td colspan="2"><button type="button" class="btn btn-primary"
+					onclick="location.href='boardList.do?page=<%=nowpage %>'">목록으로 돌아가기</button></td>
+			<td colspan="2"><button type="submit" class="btn btn-primary">수정하기</button></td>
 		</tr>
 	</table>
 </form>

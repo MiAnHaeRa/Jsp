@@ -3,6 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- "boardList에 담긴 값을 읽어서 반복처리 -->
 <%@include file="../public/header.jsp"%>
 <style>
@@ -34,20 +35,14 @@
 	background-color: #ddd;
 }
 </style>
-<%
-//request는 jsp 내장객체
-List<BoardVO> list = (List<BoardVO>) request.getAttribute("boardList");
-PageDTO pageDTO = (PageDTO) request.getAttribute("paging");
-String nowpage = (String)request.getAttribute("page");
-%>
-<h3>게시글 목록</h3>
+<h3>게시글 목록(boardList.jsp)</h3>
+<c:if test="${!empty logId }">
+<div id="Btns">
+	<button id="addBtn" class="btn btn-primary" type="button" onclick="location.href='addForm.do'">게시물 작성</button>
+</div>
+</c:if>
 <table class="table">
 	<thead>
-	<tbody>
-		<tr>
-			<button class="btn btn-primary" type="button"
-				onclick="location.href='addForm.do'">게시물 작성</button>
-		</tr>
 		<tr>
 			<th>글번호</th>
 			<th>제목</th>
@@ -55,35 +50,35 @@ String nowpage = (String)request.getAttribute("page");
 			<th>조회수</th>
 		</tr>
 	</thead>
-	<%
-	for (BoardVO vo : list) {
-	%>
-	<tr onclick="location.href='getBoard.do?boardNo=<%=vo.getBoardNo()%>&page=<%=nowpage%>'">
-		<td><%=vo.getBoardNo()%></td>
-		<td><%=vo.getTitle()%></td>
-		<td><%=vo.getWriter()%></td>
-		<td><%=vo.getClickCnt()%></td>
-	</tr>
-	<%
-	}
-	%>
+	<tbody>
+	<c:forEach var="vo" items="${boardList }">
+		<tr onclick="location.href='getBoard.do?boardNo=<c:out value="${vo.boardNo }"/>&page=<c:out value="${paging.page }"/>'">
+			<td><c:out value="${vo.boardNo }"/></td>
+			<td><c:out value="${vo.title }"/></td>
+			<td><c:out value="${vo.writer }"/></td>
+			<td><c:out value="${vo.clickCnt }"/></td>
+		</tr>
+	</c:forEach>
 	</tbody>
 </table>
 <div class="center">
 	<div class="pagination">
-		<%if(pageDTO.isPrev()) { %>
-		<a href="boardList.do?page=<%=pageDTO.getStartPage() - 1 %>">&laquo;</a> 
-		<%} %>
-		<%for(int p = pageDTO.getStartPage(); p <= pageDTO.getEndPage(); p++) { %>
-			<%if(p == pageDTO.getPage()) {%>
-				<a href="boardList.do?page=<%=p %>" class="active"><%=p %></a>
-			<%} else { %>
-				<a href="boardList.do?page=<%=p %>"><%=p %></a>
-			<%}
-		} %>
-		<%if(pageDTO.isNext()) { %>
-		<a href="boardList.do?page=<%=pageDTO.getEndPage() + 1 %>">&raquo;</a>
-		<%} %>
+		<c:if test="${paging.prev }">
+			<a href="boardList.do?page=${paging.startPage - 1 }">&laquo;</a>
+		</c:if>
+		<c:forEach var="p" begin="${paging.startPage }" end="${paging.endPage }" step="1">
+			<c:choose>
+				<c:when test="${p == paging.page }">
+					<a href="boardList.do?page=<c:out value="${p }"/>" class="active"><c:out value="${p }"/></a>
+				</c:when>
+				<c:otherwise>
+					<a href="boardList.do?page=<c:out value="${p }"/>"><c:out value="${p }"/></a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${paging.next }">
+			<a href="boardList.do?page=${paging.endPage + 1 }">&raquo;</a>
+		</c:if>
 	</div>
 </div>
 

@@ -18,7 +18,7 @@ String nowpage = request.getParameter("page");
 		<th>제목</th><td colspan="3" class="col-sm-3"><%=bvo.getTitle()%></td>
 	</tr>
 	<tr>
-		<th>글쓴이</th><td colspan="3" class="col-sm-3"><%=bvo.getWriter()%></td>
+		<th>작성자</th><td colspan="3" class="col-sm-3"><%=bvo.getWriter()%></td>
 	</tr>
 	<tr>
 		<th>내용</th><td colspan="3" class="col-sm-3"><%=bvo.getContent()%></td>
@@ -27,15 +27,15 @@ String nowpage = request.getParameter("page");
 		<th>등록일시</th><td colspan="3" class="col-sm-3"><%=yyyymmdd %></td>
 	</tr>
 	<tr>
-		<td colspan="2"><button type="button" class="btn btn-primary" onclick="location.href='boardList.do?page=<%=nowpage %>'">목록으로 돌아가기</button></td>
-		<td><button type="button" class="btn btn-primary" onclick="removeBoard()">바로삭제</button></td>
+		<td colspan="2" ><button type="button" class="btn btn-secondary" onclick="location.href='boardList.do?page=<%=nowpage %>'">목록으로 돌아가기</button></td>
+		<td colspan="2" ><button type="button" class="btn btn-danger" onclick="removeBoard()">바로삭제</button></td>
 	</tr>
 </table>
 <script type="text/javascript">
 	function removeBoard() {
 		if(confirm("정말로 해당 게시물을 삭제하시겠습니까?")) {
 			alert("삭제되었습니다.")
-			location.href='removeBoard.do?bno=<%=bvo.getBoardNo() %>'
+			location.href='removeBoard.do?bno=<%=bvo.getBoardNo()%>&page=<%=nowpage %>'
 		} else {
 			alert("삭제를 취소합니다.")
 		}

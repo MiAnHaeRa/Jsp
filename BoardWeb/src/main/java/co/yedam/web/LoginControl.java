@@ -5,28 +5,31 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.common.Control;
 import co.yedam.service.BoardService;
 import co.yedam.service.BoardServiceImpl;
 
-public class RemoveBoard implements Control {
+public class LoginControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("userId");
+		String pw = req.getParameter("userPw");
+		
 		BoardService svc = new BoardServiceImpl();
 		
-		String page = req.getParameter("page");
-
-		req.setCharacterEncoding("UTF-8");
-		if(svc.removeBoard(Integer.parseInt(req.getParameter("bno")))) {
-			System.out.println("삭제완료");
-			resp.sendRedirect("boardList.do?page=" + page);
+		if(svc.checkMember(id, pw)) {
+			//로그인
+			HttpSession session = req.getSession();
+			session.setAttribute("logId", id);
+			
+			resp.sendRedirect("main.do");
 		} else {
-			System.out.println("삭제중 오류");
+			//로그인실패
+			resp.sendRedirect("loginForm.do");
 		}
-		
-		
 
 	}
 

@@ -47,8 +47,15 @@
 	</update>
 	
 	<delete id="deleteBoard" parameterType="int">
-	delete board_tbl 
-	where board_no = #{boardNo}
+		delete board_tbl 
+		where board_no = #{boardNo}
 	</delete>
+	
+	<select id="selectMember" resultType="int">
+		select count(1) 
+		from member 
+		where user_id = #{id}
+		and   user_pw = #{pw}
+	</select>
 
 </mapper>

@@ -20,6 +20,7 @@ public class ModifyBoard implements Control {
 		BoardService svc = new BoardServiceImpl();
 
 		req.setCharacterEncoding("UTF-8");
+		int page = Integer.parseInt(req.getParameter("page"));
 		BoardVO bvo = svc.getBoard(Integer.parseInt(req.getParameter("boardNo")));
 		
 		bvo.setTitle(req.getParameter("title"));
@@ -28,7 +29,7 @@ public class ModifyBoard implements Control {
 		
 		if(svc.editBoard(bvo)) {
 			System.out.println("수정 성공");
-			resp.sendRedirect("getBoard.do?boardNo=" + bvo.getBoardNo());
+			resp.sendRedirect("getBoard.do?boardNo="+ bvo.getBoardNo() +"&page=" + page);
 		} else {
 			System.out.println("수정 실패");
 			resp.sendRedirect("boardList.do");
