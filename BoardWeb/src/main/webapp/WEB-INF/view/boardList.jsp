@@ -1,11 +1,10 @@
-<%@page import="co.yedam.common.PageDTO"%>
-<%@page import="co.yedam.vo.BoardVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- "boardList에 담긴 값을 읽어서 반복처리 -->
-<%@include file="../public/header.jsp"%>
+<jsp:include page="../public/header.jsp"/>
+
 <style>
 .center {
 	text-align: center;
@@ -82,4 +81,4 @@
 	</div>
 </div>
 
-<%@include file="../public/footer.jsp"%>
+<jsp:include page="../public/footer.jsp"/>

@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../public/header.jsp"%>
-<%
-String loginId = (String) session.getAttribute("logId");
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<jsp:include page="../public/header.jsp"/>
 <h3>게시글 올리기</h3>
 <form action="insertBoard.do" method="post" style="width:800px">
 	<table class="table">
@@ -11,7 +9,7 @@ String loginId = (String) session.getAttribute("logId");
 			<th>제목</th>
 			<td colspan="3"><input type="text" name="title" style="width:100%"></td>
 			<th for="writer">글쓴이</th>
-			<td><input type="text" name="writer" value="<%=loginId %>" style="width:100%" readonly></td>
+			<td><input type="text" name="writer" value="${logId }" style="width:100%" readonly></td>
 		</tr>
 		<tr>
 			<th>내용</th>
@@ -28,4 +26,4 @@ function getList() {
 	location.href='boardList.do';
 }
 </script>
-<%@include file="../public/footer.jsp"%>
+<jsp:include page="../public/footer.jsp"/>
