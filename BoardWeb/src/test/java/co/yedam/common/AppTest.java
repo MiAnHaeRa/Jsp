@@ -1,12 +1,10 @@
 package co.yedam.common;
 
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import co.yedam.mapper.BoardMapper;
-import co.yedam.vo.BoardVO;
 
 public class AppTest {
 
@@ -17,11 +15,9 @@ public class AppTest {
 		//interface - 구현객체
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		
-		List<BoardVO> list = mapper.boardListPaging(1);
-				
-		for(BoardVO bvo : list) {
-			System.out.println(bvo.toString());
-		}
+		SearchVO svo = new SearchVO(1, "T", "sql");
+		
+		mapper.boardListPaging(svo).forEach(bvo -> System.out.println(bvo));
 	}
 	
 }

@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 	
-<jsp:include page="../public/header.jsp"/>
 <table class="table" border="1" style="width:800px">
 	<tr>
 		<th class="col-sm-2">글번호</th><td class="col-sm-4">${bvo.boardNo }</td>
@@ -37,5 +36,3 @@
 	}
 	
 </script>
-
-<jsp:include page="../public/footer.jsp"/>

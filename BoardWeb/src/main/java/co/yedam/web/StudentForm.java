@@ -14,7 +14,7 @@ public class StudentForm implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("요청정보 : " + req + ", 응답정보 : " + resp);
 		
-		req.getRequestDispatcher("WEB-INF/view/studentForm.jsp").forward(req, resp);
+		req.getRequestDispatcher("member/studentForm.tiles").forward(req, resp);
 
 	}
 

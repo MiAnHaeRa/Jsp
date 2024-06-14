@@ -14,14 +14,18 @@ public class RemoveBoard implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		
 		BoardService svc = new BoardServiceImpl();
 		
 		String page = req.getParameter("page");
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
 
 		req.setCharacterEncoding("UTF-8");
 		if(svc.removeBoard(Integer.parseInt(req.getParameter("bno")))) {
 			System.out.println("삭제완료");
-			resp.sendRedirect("boardList.do?page=" + page);
+			resp.sendRedirect("boardList.do?page=" + page + "&searchCondition" + sc + "&keyword" + kw);
 		} else {
 			System.out.println("삭제중 오류");
 		}

@@ -21,7 +21,7 @@ public class RemoveBoardForm implements Control {
 		
 		req.setAttribute("bvo", bvo);
 
-		req.getRequestDispatcher("WEB-INF/view/removeBoardForm.jsp").forward(req, resp);
+		req.getRequestDispatcher("board/removeBoardForm.tiles").forward(req, resp);
 
 	}
 

@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- "boardList에 담긴 값을 읽어서 반복처리 -->
-<jsp:include page="../public/header.jsp"/>
 
 <style>
 .center {
@@ -35,11 +34,29 @@
 }
 </style>
 <h3>게시글 목록(boardList.jsp)</h3>
-<c:if test="${!empty logId }">
-<div id="Btns">
-	<button id="addBtn" class="btn btn-primary" type="button" onclick="location.href='addForm.do'">게시물 작성</button>
+
+<div class="center">
+	<form action="boardList.do">
+		<div class="row">
+			<div class="col-sm-4">
+				<select name="searchCondition" class="form-control">
+					<option value="">선택하세요</option>
+					<option value="T">제목</option>
+					<option value="W">작성자</option>
+					<option value="TW">제목&작성자</option>
+				</select>
+			</div>
+			<div class="col-sm-6">
+				<input type="text" name="keyword" class="form-control">
+			</div>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-primary">찾기</button>
+			</div>
+		</div>
+	</form>
 </div>
-</c:if>
+
+
 <table class="table">
 	<thead>
 		<tr>
@@ -51,7 +68,7 @@
 	</thead>
 	<tbody>
 	<c:forEach var="vo" items="${boardList }">
-		<tr onclick="location.href='getBoard.do?boardNo=<c:out value="${vo.boardNo }"/>&page=<c:out value="${paging.page }"/>'">
+		<tr onclick="location.href='getBoard.do?boardNo=<c:out value="${vo.boardNo }"/>&page=<c:out value="${paging.page }"/>&searchCondition=${searchCondition }&keyword=${keyword }'">
 			<td><c:out value="${vo.boardNo }"/></td>
 			<td><c:out value="${vo.title }"/></td>
 			<td><c:out value="${vo.writer }"/></td>
@@ -60,25 +77,23 @@
 	</c:forEach>
 	</tbody>
 </table>
+
+<c:if test="${!empty logId }">
+<div id="Btns">
+	<button id="addBtn" class="btn btn-primary" type="button" onclick="location.href='addForm.do'">게시물 작성</button>
+</div>
+</c:if>
+
 <div class="center">
 	<div class="pagination">
 		<c:if test="${paging.prev }">
-			<a href="boardList.do?page=${paging.startPage - 1 }">&laquo;</a>
+			<a href="boardList.do?page=${paging.startPage - 1 }&searchCondition=${searchCondition }&keyword=${keyword }">&laquo;</a>
 		</c:if>
 		<c:forEach var="p" begin="${paging.startPage }" end="${paging.endPage }" step="1">
-			<c:choose>
-				<c:when test="${p == paging.page }">
-					<a href="boardList.do?page=<c:out value="${p }"/>" class="active"><c:out value="${p }"/></a>
-				</c:when>
-				<c:otherwise>
-					<a href="boardList.do?page=<c:out value="${p }"/>"><c:out value="${p }"/></a>
-				</c:otherwise>
-			</c:choose>
+			<a href="boardList.do?page=<c:out value="${p }"/>&searchCondition=${searchCondition }&keyword=${keyword }" class=${p == paging.page ? 'active' : ''}><c:out value="${p }"/></a>
 		</c:forEach>
 		<c:if test="${paging.next }">
-			<a href="boardList.do?page=${paging.endPage + 1 }">&raquo;</a>
+			<a href="boardList.do?page=${paging.endPage + 1 }&searchCondition=${searchCondition }&keyword=${keyword }">&raquo;</a>
 		</c:if>
 	</div>
 </div>
-
-<jsp:include page="../public/footer.jsp"/>

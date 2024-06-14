@@ -15,13 +15,20 @@ public class GetBoard implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		BoardService svc = new BoardServiceImpl();
 		req.setCharacterEncoding("UTF-8");
+		
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
+		
+		BoardService svc = new BoardServiceImpl();
+		
 		BoardVO bvo = svc.getBoard(Integer.parseInt(req.getParameter("boardNo")));
 		
 		req.setAttribute("bvo", bvo);
+		req.setAttribute("searchCondition", sc);
+		req.setAttribute("keyword", kw);
 		
-		req.getRequestDispatcher("WEB-INF/view/board.jsp").forward(req, resp);
+		req.getRequestDispatcher("board/board.tiles").forward(req, resp);
 	}
 
 }

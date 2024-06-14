@@ -3,9 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<jsp:include page="../public/header.jsp"/>
-
-<p>${bvo }</p>
 <h3>상세화면</h3>
 <table class="table" border="1" style="width:800px">
 	<tr>
@@ -35,15 +32,13 @@
 	</tr>
 </table>
 
-<p><c:out value="여기에 페이지 적음(${param.page })"/></p> 
-<p><c:out value="여기에 페이지 적음(${paging.page })"/></p>
 <script type="text/javascript">
 	function getList() {
-		location.href='boardList.do?page=${param.page}';
+		location.href='boardList.do?page=${param.page}&searchCondition=${searchCondition }&keyword=${keyword }';
 	}
 	
 	function modifyList() {
-		location.href='modifyBoardForm.do?bno=${param.boardNo}&page=${param.page}';
+		location.href='modifyBoardForm.do?bno=${param.boardNo}&page=${param.page}&searchCondition=${searchCondition }&keyword=${keyword }';
 	}
 	
 	function removeBoardForm() {
@@ -60,4 +55,3 @@
 	}
 	
 </script>
-<jsp:include page="../public/footer.jsp"/>

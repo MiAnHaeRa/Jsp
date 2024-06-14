@@ -26,10 +26,16 @@ public class ModifyBoard implements Control {
 		bvo.setTitle(req.getParameter("title"));
 		bvo.setContent(req.getParameter("content"));
 		bvo.setWriter(req.getParameter("writer"));
+
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
+		
+		req.setAttribute("searchCondition", sc);
+		req.setAttribute("keyword", kw);
 		
 		if(svc.editBoard(bvo)) {
 			System.out.println("수정 성공");
-			resp.sendRedirect("getBoard.do?boardNo="+ bvo.getBoardNo() +"&page=" + page);
+			resp.sendRedirect("getBoard.do?boardNo="+ bvo.getBoardNo() +"&page=" + page + "&searchCondition=" + sc + "&keyword=" + kw);
 		} else {
 			System.out.println("수정 실패");
 			resp.sendRedirect("boardList.do");

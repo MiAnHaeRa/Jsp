@@ -40,7 +40,7 @@ public class AddStudent implements Control {
 			System.out.println("등록실패...");
 		}
 
-		resp.sendRedirect("boardList.do");
+		resp.sendRedirect("board/boardList.tiles");
 
 	}
 

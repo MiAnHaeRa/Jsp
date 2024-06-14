@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-<jsp:include page="../public/header.jsp"/>
 
 <form action="modifyBoard.do" method="post" style="width:800px;">
 <input type="hidden" name="page" value="${param.page }">
 <input type="hidden" name="boardNo" value="${bvo.boardNo }">
 <input type="hidden" name="clickCnt" value="${bvo.clickCnt }" >
+<input type="hidden" name="searchCondition" value="${searchCondition }" >
+<input type="hidden" name="keyword" value="${keyword }" >
 
 	<table class="table" border="1">
 		<tr>
@@ -32,10 +33,8 @@
 
 		<tr>
 			<td colspan="2"><button type="button" class="btn btn-primary"
-					onclick="location.href='boardList.do?page=${param.page }'">목록으로 돌아가기</button></td>
+					onclick="location.href='boardList.do?page=${param.page }&searchCondition=${searchCondition }&keyword=${keyword }'">목록으로 돌아가기</button></td>
 			<td colspan="2"><button type="submit" class="btn btn-primary">수정하기</button></td>
 		</tr>
 	</table>
 </form>
-
-<jsp:include page="../public/footer.jsp"/>

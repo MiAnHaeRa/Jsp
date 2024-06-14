@@ -28,7 +28,7 @@ public class LoginControl implements Control {
 			resp.sendRedirect("main.do");
 		} else {
 			//로그인실패
-			resp.sendRedirect("loginForm.do");
+			resp.sendRedirect("member/loginForm.tiles");
 		}
 
 	}

@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -17,30 +19,7 @@
     <body>
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
-            <div class="border-end bg-white" id="sidebar-wrapper">
-            	<c:choose>
-              		<c:when test="${logId == null }">
-                		<div class="sidebar-heading border-bottom bg-light">Start Bootstrap<br>(Guest)</div>
-              		</c:when>
-              		<c:otherwise>
-                		<div class="sidebar-heading border-bottom bg-light">Start Bootstrap<br>(${logId })</div>
-              		</c:otherwise>
-                </c:choose>
-                <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="main.do">메인페이지</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="StudentForm.do">학생정보등록</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="boardList.do">자유게시판</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-                    <c:choose>
-                    	<c:when test="${logId == null }">
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="loginForm.do">로그인</a>
-                    	</c:when>
-                    	<c:otherwise>
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logout.do">로그아웃</a>
-                    	</c:otherwise>
-                    </c:choose>
-                </div>
-            </div>
+            <tiles:insertAttribute name="menu"/>
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
@@ -67,3 +46,14 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
+                    <!-- body attribute에 jsp페이지를 위치에 지정 -->
+                    <tiles:insertAttribute name="body" />
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

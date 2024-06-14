@@ -31,7 +31,7 @@ public class InsertBoard implements Control {
 			resp.sendRedirect("boardList.do");
 		} else {
 			System.out.println("추가실패");
-			req.getRequestDispatcher("WEB-INF/view/addBoardForm.jsp").forward(req, resp);
+			req.getRequestDispatcher("board/addBoardForm.tiles").forward(req, resp);
 		}
 
 	}

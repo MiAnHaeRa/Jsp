@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-<jsp:include page="../public/header.jsp"/>
 <h3>게시글 올리기</h3>
 <form action="insertBoard.do" method="post" style="width:800px">
 	<table class="table">
@@ -26,4 +25,3 @@ function getList() {
 	location.href='boardList.do';
 }
 </script>
-<jsp:include page="../public/footer.jsp"/>
