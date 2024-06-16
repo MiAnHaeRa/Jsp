@@ -5,6 +5,8 @@
 
 
 <mapper namespace="co.yedam.mapper.BoardMapper">
+
+	<!-- 게시판 관련 -->
 	<select id="boardList" resultType="co.yedam.vo.BoardVO">
 		select board_no, title,
 		content, writer, click_cnt, creation_date
@@ -81,11 +83,23 @@
 		where board_no = #{boardNo}
 	</delete>
 	
+	<!-- 회원관련 -->
 	<select id="selectMember" resultType="int">
 		select count(1) 
 		from member 
 		where user_id = #{id}
 		and   user_pw = #{pw}
+	</select>
+	
+	<insert id="insertMember" parameterType="co.yedam.vo.MemberVO">
+		insert into member (user_id, user_pw, user_name) 
+		values (#{userId}, #{userPw}, #{userName})
+	</insert>
+	
+	<select id="checkId" resultType="int" parameterType="String">
+		select count(0)
+		from member
+		where user_id = #{id}
 	</select>
 
 </mapper>

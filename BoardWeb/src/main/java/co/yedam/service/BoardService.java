@@ -4,6 +4,7 @@ import java.util.List;
 
 import co.yedam.common.SearchVO;
 import co.yedam.vo.BoardVO;
+import co.yedam.vo.MemberVO;
 /* 
  * 목록, 단건조회, 등록, 수정, 삭제
  * 기능의 실행은 mapper 실행
@@ -19,4 +20,6 @@ public interface BoardService {
 	
 	//checkMember(id,pw)
 	boolean checkMember(String id, String pw);
+	boolean checkId(String id);
+	boolean insertMember(MemberVO mvo);
 }

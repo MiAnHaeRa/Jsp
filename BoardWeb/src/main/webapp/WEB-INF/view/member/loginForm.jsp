@@ -20,7 +20,14 @@
 			<td><input type="password" name="userPw"></td>
 		</tr>
 		<tr>
-			<td colspan="2"><button type="submit">로그인</button></td>
+			<td><button type="submit">로그인</button></td>
+			<td><button type="button" onclick="regist()">회원가입</button></td>
 		</tr>
 	</table>
 </form>
+
+<script type="text/javascript">
+	function regist() {
+		location.href="registForm.do";
+	}
+</script>
