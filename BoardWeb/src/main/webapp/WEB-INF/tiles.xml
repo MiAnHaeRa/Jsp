@@ -11,14 +11,26 @@
     <put-attribute name="footer" value="/tiles/credits.jsp" />
   </definition>
   
+  <!-- admin 구역 -->
+  <definition name="adminapp" template="/WEB-INF/layout/admin/adminTemp.jsp">
+    <put-attribute name="title" value="Tiles tutorial homepage" />
+    <put-attribute name="body" value="/WEB-INF/layout/admin/admin_body.jsp" />
+    <put-attribute name="menu" value="/WEB-INF/layout/admin/admin_menu.jsp" />
+  </definition>
+  
+  <definition name="WILDCARD:admin/*" extends="adminapp">
+  	<put-attribute name="body" value="/WEB-INF/view/admin/{1}.jsp" />
+  </definition>
+  
   <definition name="myapp.homepage2" extends="myapp.homepage">
   	<put-attribute name="body" value="/WEB-INF/view/loginForm.jsp" />
   </definition>
   
-  <definition name="boardapp" template="/WEB-INF/layout/boardTem.jsp">
+  <!-- board 구역 -->
+  <definition name="boardapp" template="/WEB-INF/layout/board/boardTem.jsp">
     <put-attribute name="title" value="Tiles tutorial homepage" />
-    <put-attribute name="body" value="/WEB-INF/layout/body.jsp" />
-    <put-attribute name="menu" value="/WEB-INF/layout/menu.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layout/board/body.jsp" />
+    <put-attribute name="menu" value="/WEB-INF/layout/board/menu.jsp" />
     
     <!-- 
     <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
@@ -30,8 +42,8 @@
   	<put-attribute name="body" value="/WEB-INF/view/board/{1}.jsp" />
   </definition>
   
-  <definition name="WILDCARD:member/*" extends="boardapp">
-  	<put-attribute name="body" value="/WEB-INF/view/member/{1}.jsp" />
+  <definition name="WILDCARD:*/*" extends="boardapp">
+  	<put-attribute name="body" value="/WEB-INF/view/{1}/{2}.jsp" />
   </definition>
   
 </tiles-definitions>

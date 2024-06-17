@@ -19,8 +19,8 @@ public class RegistForm implements Control {
 		String pw = req.getParameter("pw");
 		pw = pw == null ? "" : pw;
 		String checked = req.getParameter("checked");
-		System.out.println(checked);
-		if(checked.equals("false") || checked.equals("") || checked == null) {
+		System.out.println("회원가입 창으로 넘어가는중 : " + checked);
+		if(checked == null || checked.equals("") || checked.equals("false")) {
 			checked =  "false";
 		} else {
 			checked = "true";

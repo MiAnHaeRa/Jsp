@@ -84,8 +84,8 @@
 	</delete>
 	
 	<!-- 회원관련 -->
-	<select id="selectMember" resultType="int">
-		select count(1) 
+	<select id="selectMember" resultType="co.yedam.vo.MemberVO">
+		select * 
 		from member 
 		where user_id = #{id}
 		and   user_pw = #{pw}
@@ -96,8 +96,8 @@
 		values (#{userId}, #{userPw}, #{userName})
 	</insert>
 	
-	<select id="checkId" resultType="int" parameterType="String">
-		select count(0)
+	<select id="checkId" resultType="int">
+		select count(1)
 		from member
 		where user_id = #{id}
 	</select>

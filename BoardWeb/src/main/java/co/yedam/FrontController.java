@@ -1,6 +1,7 @@
 package co.yedam;
 
 import java.io.IOException;
+import java.lang.reflect.Member;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import co.yedam.web.BoardList;
 import co.yedam.web.CheckId;
 import co.yedam.web.GetBoard;
 import co.yedam.web.MainControl;
+import co.yedam.web.MemberList;
 import co.yedam.web.ModifyBoard;
 import co.yedam.web.ModifyBoardForm;
 import co.yedam.web.ProductControl;
@@ -23,6 +25,7 @@ import co.yedam.web.RegistControl;
 import co.yedam.web.RegistForm;
 import co.yedam.web.RemoveBoard;
 import co.yedam.web.RemoveBoardForm;
+import co.yedam.web.ScriptForm;
 import co.yedam.web.StudentForm;
 import co.yedam.web.InsertBoard;
 import co.yedam.web.LoginControl;
@@ -65,6 +68,11 @@ public class FrontController extends HttpServlet {
 		map.put("/checkId.do", new CheckId());
 		map.put("/regist.do", new RegistControl());
 		
+		//회원목록(관리자템플릿)
+		map.put("/memberList.do", new MemberList());
+		
+		//자바스크립트 연습용 페이지
+		map.put("/script.do", new ScriptForm());
 	}
 	
 	@Override

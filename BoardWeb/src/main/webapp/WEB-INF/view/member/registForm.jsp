@@ -5,6 +5,7 @@
 <h3>회원가입</h3>
 <form action="regist.do" method="post" style="width:500px">
 	<table class="table">
+	<input type="hidden" value="${checked }">
 		<tr>
 			<th>이름</th><td><input type="text" name="name" value="${name }" required></td>
 		</tr>
@@ -14,10 +15,10 @@
 		<tr>
 			<td><button type="button" onclick="checkId()">아이디중복체크</button></td>
 			<c:choose>
-				<c:when test="${checked }.equals('false') && ${id } != null">
+				<c:when test="${checked }.equals(&quot;false&quot;) && ${id } != null">
 					<td>중복된 아이디입니다.</td>
 				</c:when>
-				<c:when test="${checked }.equals('true') && ${id } != null">
+				<c:when test="${checked }.equals(&quot;true&quot;) && ${id } != null">
 					<td>사용가능한 아이디입니다.</td>
 				</c:when>
 				<c:otherwise>

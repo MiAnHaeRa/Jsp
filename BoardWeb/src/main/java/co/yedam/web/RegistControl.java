@@ -20,8 +20,9 @@ public class RegistControl implements Control {
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
 		String checked = req.getParameter("checked");
+		System.out.println("회원가입 도중 : " + checked);
 		
-		if(checked.equals(false)) {
+		if(checked.equals("false") || checked == null) {
 			resp.sendRedirect("/member/registForm.tiles");
 			return;
 		}

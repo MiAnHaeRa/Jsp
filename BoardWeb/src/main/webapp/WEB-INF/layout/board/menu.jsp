@@ -15,7 +15,8 @@
      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="main.do">메인페이지</a>
      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="StudentForm.do">학생정보등록</a>
      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="boardList.do">자유게시판</a>
-     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">이건 템플릿</a>
+     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="!#">템플릿적용된것</a>
+     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="script.do">자바스크립트</a>
      <c:choose>
      	<c:when test="${logId == null }">
           <a class="list-group-item list-group-item-action list-group-item-light p-3" href="loginForm.do">로그인</a>

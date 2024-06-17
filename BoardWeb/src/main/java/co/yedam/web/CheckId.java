@@ -17,13 +17,11 @@ public class CheckId implements Control {
 		
 		String name = req.getParameter("name");
 		name = name == null ? "" : name;
-		System.out.println(name);
 		String id = req.getParameter("id");
 		id = id == null ? "" : id;
-		System.out.println(id);
+		System.out.println("체크하는중 ID : " + id);
 		String pw = req.getParameter("pw");
 		pw = pw == null ? "" : pw;
-		System.out.println(pw);
 		String checked;
 		
 		req.setAttribute("name", name);
@@ -33,7 +31,7 @@ public class CheckId implements Control {
 		BoardService svc = new BoardServiceImpl();
 		if(svc.checkId(id)) {
 			checked = "true";
-			System.out.println(checked);
+			System.out.println("체크하는중 checked : " + checked);
 			req.setAttribute("checked", checked);
 			req.getRequestDispatcher("/member/registForm.tiles").forward(req, resp);
 		} else {

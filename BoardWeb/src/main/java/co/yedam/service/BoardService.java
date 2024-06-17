@@ -19,7 +19,7 @@ public interface BoardService {
 	boolean removeBoard(int bno);
 	
 	//checkMember(id,pw)
-	boolean checkMember(String id, String pw);
+	MemberVO checkMember(String id, String pw);
 	boolean checkId(String id);
 	boolean insertMember(MemberVO mvo);
 }
