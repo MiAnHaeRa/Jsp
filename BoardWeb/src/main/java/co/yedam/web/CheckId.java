@@ -15,11 +15,13 @@ public class CheckId implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		String id = req.getParameter("id");
+		System.out.println("체크하는중 ID : " + id);
+		if(id == null || id.equals("")) {
+			req.getRequestDispatcher("member/registForm.tiles");
+		}
 		String name = req.getParameter("name");
 		name = name == null ? "" : name;
-		String id = req.getParameter("id");
-		id = id == null ? "" : id;
-		System.out.println("체크하는중 ID : " + id);
 		String pw = req.getParameter("pw");
 		pw = pw == null ? "" : pw;
 		String checked;
@@ -33,12 +35,12 @@ public class CheckId implements Control {
 			checked = "true";
 			System.out.println("체크하는중 checked : " + checked);
 			req.setAttribute("checked", checked);
-			req.getRequestDispatcher("/member/registForm.tiles").forward(req, resp);
+			req.getRequestDispatcher("member/registForm.tiles").forward(req, resp);
 		} else {
 			checked = "false";
 			System.out.println(checked);
 			req.setAttribute("checked", checked);
-			req.getRequestDispatcher("/member/registForm.tiles").forward(req, resp);
+			req.getRequestDispatcher("member/registForm.tiles").forward(req, resp);
 		}
 
 	}

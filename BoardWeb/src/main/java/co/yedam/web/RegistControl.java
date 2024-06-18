@@ -23,7 +23,7 @@ public class RegistControl implements Control {
 		System.out.println("회원가입 도중 : " + checked);
 		
 		if(checked.equals("false") || checked == null) {
-			resp.sendRedirect("/member/registForm.tiles");
+			resp.sendRedirect("member/registForm.tiles");
 			return;
 		}
 		
@@ -35,10 +35,10 @@ public class RegistControl implements Control {
 		BoardService svc = new BoardServiceImpl();
 		if(svc.insertMember(mvo)) {
 			System.out.println("회원가입 성공");
-			req.getRequestDispatcher("/member/loginForm.tiles").forward(req, resp);
+			req.getRequestDispatcher("member/loginForm.tiles").forward(req, resp);
 		} else {
 			System.out.println("회원가입 실패");
-			resp.sendRedirect("/member/registForm.tiles");
+			resp.sendRedirect("member/registForm.tiles");
 		}
 
 	}

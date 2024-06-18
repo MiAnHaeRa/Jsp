@@ -31,7 +31,7 @@ public class RegistForm implements Control {
 		req.setAttribute("pw", pw);
 		req.setAttribute("checked", checked);
 		
-		req.getRequestDispatcher("/member/registForm.tiles").forward(req, resp);
+		req.getRequestDispatcher("member/registForm.tiles").forward(req, resp);
 		
 	}
 

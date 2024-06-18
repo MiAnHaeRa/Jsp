@@ -5,7 +5,7 @@
 <h3>회원가입</h3>
 <form action="regist.do" method="post" style="width:500px">
 	<table class="table">
-	<input type="hidden" value="${checked }">
+	<input type="hidden" value="${checked }" name="checked">
 		<tr>
 			<th>이름</th><td><input type="text" name="name" value="${name }" required></td>
 		</tr>
@@ -15,10 +15,10 @@
 		<tr>
 			<td><button type="button" onclick="checkId()">아이디중복체크</button></td>
 			<c:choose>
-				<c:when test="${checked }.equals(&quot;false&quot;) && ${id } != null">
+				<c:when test="${checked } == 'false' && ${id } != null">
 					<td>중복된 아이디입니다.</td>
 				</c:when>
-				<c:when test="${checked }.equals(&quot;true&quot;) && ${id } != null">
+				<c:when test="${checked } == 'true' && ${id } != null">
 					<td>사용가능한 아이디입니다.</td>
 				</c:when>
 				<c:otherwise>
@@ -40,11 +40,10 @@
 </form>
 
 <script type="text/javascript">
+	alert("id : ${id}"); 
+	alert("checked : ${checked}");
+	
 	function checkId() {
-		let name =  document.querySelector('input[name=name]').value;
-		let id =  document.querySelector('input[name=id]').value;
-		let pw =  document.querySelector('input[name=pw]').value;
-		
-		location.href='checkId.do?name='+name+'&id='+id+'&pw='+pw+'&checked=${checked}';
+		location.href='checkId.do?name=${name}&id=${id}&pw=${pw}';
 	}
 </script>
