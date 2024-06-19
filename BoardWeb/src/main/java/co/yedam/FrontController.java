@@ -1,7 +1,6 @@
 package co.yedam;
 
 import java.io.IOException;
-import java.lang.reflect.Member;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,11 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.common.Control;
 import co.yedam.web.AddBoardForm;
 import co.yedam.web.AddStudent;
+import co.yedam.web.AjaxForm;
 import co.yedam.web.BoardList;
 import co.yedam.web.CheckId;
+import co.yedam.web.CheckIdAjax;
 import co.yedam.web.GetBoard;
 import co.yedam.web.MainControl;
+import co.yedam.web.MemberAddAjax;
+import co.yedam.web.MemberDelAjax;
 import co.yedam.web.MemberList;
+import co.yedam.web.MemberUpdateAjax;
 import co.yedam.web.ModifyBoard;
 import co.yedam.web.ModifyBoardForm;
 import co.yedam.web.ProductControl;
@@ -73,6 +77,14 @@ public class FrontController extends HttpServlet {
 		
 		//자바스크립트 연습용 페이지
 		map.put("/script.do", new ScriptForm());
+		
+		//Ajax 연습용 페이지
+		map.put("/ajax.do", new AjaxForm());
+		map.put("/membersAjax.do", new MemberAjax());
+		map.put("/addAjax.do", new MemberAddAjax());
+		map.put("/checkIdAjax.do", new CheckIdAjax());
+		map.put("/deleteAjax.do", new MemberDelAjax());
+		map.put("/updateAjax.do", new MemberUpdateAjax());
 	}
 	
 	@Override

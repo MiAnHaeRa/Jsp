@@ -42,8 +42,10 @@
 <script type="text/javascript">
 	alert("id : ${id}"); 
 	alert("checked : ${checked}");
-	
+
 	function checkId() {
-		location.href='checkId.do?name=${name}&id=${id}&pw=${pw}';
+		let id = document.querySelector('input[name=id]').value;
+		alert(id);
+		location.href='checkId.do?id='+id;
 	}
 </script>

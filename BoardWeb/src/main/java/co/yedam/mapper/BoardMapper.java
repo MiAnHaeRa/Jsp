@@ -23,5 +23,10 @@ public interface BoardMapper {
 	MemberVO selectMember(@Param("id") String id, @Param("pw") String pw);
 	int insertMember(MemberVO mvo);
 	int checkId(String id);
+	int deleteMember(String id);
+	int updateMember(MemberVO mvo);
+	
+	List<MemberVO> memberList();
+	int insertMemberAjax(MemberVO mvo);
 }
 

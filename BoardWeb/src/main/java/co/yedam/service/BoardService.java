@@ -22,4 +22,9 @@ public interface BoardService {
 	MemberVO checkMember(String id, String pw);
 	boolean checkId(String id);
 	boolean insertMember(MemberVO mvo);
+	boolean deleteMember(String id);
+	boolean updateMember(MemberVO mvo);
+	
+	List<MemberVO> memberList();
+	boolean insertMemberAjax(MemberVO mvo);
 }
