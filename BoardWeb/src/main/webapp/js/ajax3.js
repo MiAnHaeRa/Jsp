@@ -40,7 +40,7 @@ function makeRow(obj = {}) {
     btn.setAttribute('type', 'button');
     btn.setAttribute('id', 'trDelBtn');
     btn.setAttribute('class', 'btn btn-danger');
-    btn.setAttribute('onclick', 'DeleteMember');
+    btn.setAttribute('onclick', 'DeleteMember()');
     btn.innerText = "삭제";
     td.appendChild(btn);
     tr.appendChild(td);
@@ -151,5 +151,5 @@ document.querySelector('#deleteBtn').addEventListener('click', function() {
 });
 
 function DeleteMember() {
-
+	console.log("이거뜸");
 }

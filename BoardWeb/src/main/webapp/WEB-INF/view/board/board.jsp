@@ -3,8 +3,32 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+<style>
+	table {
+		margin: 0 auto;
+	}
+	div.reply, div.header {
+		width: 1000px;
+	}
+	div.reply div {
+		margin: auto;
+	}
+	div.reply ul {
+		list-style-type: none;
+		margin-top: 3px;
+	}
+	div.reply li {
+		padding-top: 1px;
+		padding-bottom: 1px;
+	}
+	div.reply span {
+		display: inline-block;
+		text-align: center;
+	}
+</style>
+
 <h3>상세화면</h3>
-<table class="table" border="1" style="width:800px">
+<table class="table" border="1" style="width:1000px">
 	<tr>
 		<th class="col-sm-2">글번호</th><td class="col-sm-4"><c:out value="${bvo.boardNo }"/></td>
 		<th class="col-sm-2">조회수</th><td class="col-sm-4"><c:out value="${bvo.clickCnt }"/></td>
@@ -32,7 +56,36 @@
 	</tr>
 </table>
 
+<!-- 댓글관련 시작 -->
+<div class="container reply">
+	<div class="header">
+		<input type="text" class="col-sm-8" id="reply">
+		<button class="col-sm-3 btn btn-primary" id="addReply">등록</button>
+	</div>
+	<div class="content">
+		<ul>
+			<li>
+				<span class="col-sm-1">글번호</span>
+				<span class="col-sm-4">글내용</span>
+				<span class="col-sm-2">작성자</span>
+				<span class="col-sm-3">작성일자</span>
+				<span class="col-sm-1">삭제버튼</span>
+			</li>
+			<li><hr/></li>
+			<li style="display: none;">
+				<span class="col-sm-1">3</span>
+				<span class="col-sm-4">asdasdasdasd</span>
+				<span class="col-sm-1">user01</span>
+				<span class="col-sm-3">2024-06-20 13:22:33</span>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- 댓글관련 끝, -->
+
 <script type="text/javascript">
+	const bno = "${bvo.boardNo }";
+	const replyer = "${logId}";
 	function getList() {
 		location.href='boardList.do?page=${param.page}&searchCondition=${searchCondition }&keyword=${keyword }';
 	}
@@ -55,3 +108,5 @@
 	}
 	
 </script>
+<script src="js/replyService.js"></script>
+<script src="js/reply.js"></script>
