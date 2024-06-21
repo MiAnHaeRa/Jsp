@@ -5,9 +5,10 @@
 
 const svc = {
     // 목록
-    replyList(bno = 1, successCall) {
+    replyList(param = {bno : 1, page : 1}, successCall) {
         const xhtp = new XMLHttpRequest();
-        xhtp.open('get', 'replyListJson.do?bno=' + bno);
+        let url = 'replyListJson.do?bno=' + param.bno + '&page=' + param.page;
+        xhtp.open('get', url);
         xhtp.send();
         xhtp.onload = successCall;
     },
@@ -25,9 +26,17 @@ const svc = {
     },
     // 삭제
     removeReply(rno, successCall) {
-        let delAjax = new XMLHttpRequest();
-        delAjax.open('get', 'removeReply.do?rno=' + rno);
-        delAjax.send();
-        delAjax.onload = successCall;
-    }
+        let xhtp = new XMLHttpRequest();
+        xhtp.open('get', 'removeReply.do?rno=' + rno);
+        xhtp.send();
+        xhtp.onload = successCall;
+    },
+    //댓글갯수
+    replyTotalCnt(bno = 1, successCall) {
+		const xhtp = new XMLHttpRequest();
+        let url = 'replyTotalCnt.do?bno=' + bno;
+        xhtp.open('get', url);
+        xhtp.send();
+        xhtp.onload = successCall;
+	}
 }

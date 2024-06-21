@@ -24,4 +24,4 @@ const json = `[{"id":1,"first_name":"Rory","last_name":"Belhome","email":"rbelho
     {"id":14,"first_name":"Antonina","last_name":"Braycotton","email":"abraycottond@instagram.com","gender":"Female","salary":7884},
     {"id":15,"first_name":"Sarene","last_name":"Banting","email":"sbantinge@plala.or.jp","gender":"Female","salary":4487}]`;
 
-    const employees = JSON.parse(json);
+const employees = JSON.parse(json);

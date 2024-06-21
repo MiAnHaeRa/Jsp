@@ -36,4 +36,16 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.deleteReply(replyNo) == 1;
 	}
 
+	@Override
+	public List<ReplyVO> replyListPaging(int boardNo, int page) {
+		// TODO Auto-generated method stub
+		return mapper.selectListPaging(boardNo, page);
+	}
+
+	@Override
+	public int getTotalCnt(int bno) {
+		// TODO Auto-generated method stub
+		return mapper.selectReplyCnt(bno);
+	}
+
 }
