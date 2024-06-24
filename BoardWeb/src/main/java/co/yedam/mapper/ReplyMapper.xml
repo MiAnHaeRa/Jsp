@@ -17,15 +17,16 @@
 	</select>
 
 	<select id="selectListPaging">
-		select 	b.* 
-		from 	(select /*+INDEX_DESC(r REPLY_PK*/ rownum rn, r.*
-				from reply_tbl r
-				where board_no = #{boardNo}
-				order by reply_no desc) b
+		select b.*
+		from (select /*+INDEX_DESC(r REPLY_PK*/ rownum rn, r.*
+		from
+		reply_tbl r
+		where board_no = #{boardNo}
+		order by reply_no desc) b
 		<![CDATA[
 		where 	b.rn <=#{page} * 5
 		]]>
-		and 	b.rn > (#{page} - 1) * 5
+		and b.rn > (#{page} - 1) * 5
 	</select>
 
 	<select id="selectReply" parameterType="int">
@@ -51,11 +52,27 @@
 		delete from reply_tbl
 		where reply_no = #{replyNo}
 	</delete>
-	
+
 	<select id="selectReplyCnt" parameterType="int">
-		select count(1) 
-		from reply_tbl 
+		select count(1)
+		from
+		reply_tbl
 		where board_no = #{bno}
 	</select>
 
+	<insert id="insertCenter">
+		insert into center_tbl(id, center_name, sido, phone_number, address)
+		<foreach collection="array" item="center" open=" select "
+			close=" from dual " separator=" from dual UNION all select ">
+			#{center.id}, #{center.centerName},
+			#{center.sido}, #{center.phoneNumber}, #{center.address}
+		</foreach>
+	</insert>
+
+	<select id="centerBySido" resultType="map">
+		select sido, count(1) cnt
+		from center_tbl
+		group by sido
+		order by 2 desc
+	</select>
 </mapper>

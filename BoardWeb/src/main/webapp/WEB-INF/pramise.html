@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Promise 객체</p>
+    <script>
+        async function promiseFuc() {
+            const promise = await new Promise((resolve, reject) => {
+                //정상적 실행 -> resolve 실행
+                //비정상적 실행 -> reject 실행
+                setTimeout(function () {
+                    // resolv('Success');
+                    reject('Fail');
+                }, 1000);
+            })
+                .then(function (result) {
+                    console.log(result);
+                }) // => 성공하면 실행
+                .catch(function (err) {
+                    console.log(err);
+                }); // => 실패하면 실행
+
+            /**
+            promise
+                .then(function (result) {
+                    console.log(result);
+                }) // => 성공하면 실행
+                .catch(function (err) {
+                    console.log(err);
+                }); // => 실패하면 실행
+            */
+        };
+
+        promiseFuc();
+    </script>
+</body>
+
+</html>

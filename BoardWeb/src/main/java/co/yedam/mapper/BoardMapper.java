@@ -26,6 +26,9 @@ public interface BoardMapper {
 	int deleteMember(String id);
 	int updateMember(MemberVO mvo);
 	
+	//파일첨부 회원등록
+	int insertMemberImg(MemberVO mvo);
+	
 	List<MemberVO> memberList();
 	int insertMemberAjax(MemberVO mvo);
 }

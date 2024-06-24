@@ -3,9 +3,13 @@
 <!-- publicData.jsp -->
  <h3>공공데이터 연습</h3>
  <div id="searchDiv">
-    <label for="search">검색어</label>
+    <label for="search">검색어(주소)</label>
     <input type="text" name="search" id="search" placeholder="ex)동구">
     <button type="button" class="btn btn-primary" onclick="searchBtn()">검색</button>
+    <select name="sidoSelect" id="sidoSelect">
+    	<option value="">전체보기</option>
+    </select>
+    <button type="button" id="centerDB">센터DB생성</button>
  </div>
 <table class="table">
     <thead>

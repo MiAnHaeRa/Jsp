@@ -3,16 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <h3>회원가입</h3>
-<form action="regist.do" method="post" style="width:500px">
+<form action="regist.do" method="post" style="width:500px" enctype="multipart/form-data">
 	<table class="table">
 	<input type="hidden" value="${checked }" name="checked">
 		<tr>
-			<th>이름</th><td><input type="text" name="name" value="${name }" required></td>
+			<th>이름</th><td><input type="text" name="name" class="form-control" value="${name }" required></td>
 		</tr>
 		<tr>
-			<th>아이디</th><td><input type="text" name="id" value="${id }" required></td>
+			<th>아이디</th><td><input type="text" name="id" class="form-control" value="${id }" required></td>
 		</tr>
-		<tr>
+		<%-- <tr>
 			<td><button type="button" onclick="checkId()">아이디중복체크</button></td>
 			<c:choose>
 				<c:when test="${checked } == 'false' && ${id } != null">
@@ -25,12 +25,15 @@
 					<td>이게뜨나?</td>
 				</c:otherwise>				
 			</c:choose>
+		</tr> --%>
+		<tr>
+			<th>비밀번호</th><td><input type="password" name="pw" class="form-control" value="${pw }" required></td>
 		</tr>
 		<tr>
-			<th>비밀번호</th><td><input type="password" name="pw" value="${pw }" required></td>
+			<th>비밀번호 확인</th><td><input type="password" name="pwcheck" class="form-control" placeholder="아직 구현안됐지만 입력 해야함" required></td>
 		</tr>
 		<tr>
-			<th>비밀번호 확인</th><td><input type="password" name="pwcheck" required></td>
+			<th>이미지</th><td><input type="file" name="myImg" class="form-control"></td>
 		</tr>
 		<tr>
 			<td><button type="button" onclick="location.href='loginForm.do'">돌아가기</button></td>
@@ -40,8 +43,6 @@
 </form>
 
 <script type="text/javascript">
-	alert("id : ${id}"); 
-	alert("checked : ${checked}");
 
 	function checkId() {
 		let id = document.querySelector('input[name=id]').value;

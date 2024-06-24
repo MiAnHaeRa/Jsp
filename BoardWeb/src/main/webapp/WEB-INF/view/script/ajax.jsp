@@ -127,6 +127,10 @@
                 </td>
             </tr>
             <tr>
+                <th>파일</th>
+                <td><input type="file" id="myImg"></td>
+            </tr>
+            <tr>
                 <td colspan="2">
                     <button type="button" id="addBtn" class="btn btn-primary">등록</button>
                     <button type="button" id="deleteBtn" class="btn btn-danger">삭제</button>

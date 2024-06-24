@@ -94,4 +94,10 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return mapper.updateMember(mvo) == 1;
 	}
+
+	@Override
+	public boolean addMemberImg(MemberVO mvo) {
+		// TODO Auto-generated method stub
+		return mapper.insertMemberImg(mvo) == 1;
+	}
 }

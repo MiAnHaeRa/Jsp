@@ -25,6 +25,9 @@ public interface BoardService {
 	boolean deleteMember(String id);
 	boolean updateMember(MemberVO mvo);
 	
+	//파일첨부 회원등록
+	boolean addMemberImg(MemberVO mvo);
+	
 	List<MemberVO> memberList();
 	boolean insertMemberAjax(MemberVO mvo);
 }
