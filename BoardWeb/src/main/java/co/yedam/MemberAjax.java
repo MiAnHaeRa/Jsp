@@ -28,6 +28,7 @@ public class MemberAjax implements Control {
 				+ ", \"userName\":\"" + list.get(i).getUserName() + "\""
 				+ ", \"userPw\":\"" + list.get(i).getUserPw() + "\""
 				+ ", \"responsibility\":\"" + list.get(i).getResponsibility() + "\""
+				+ ", \"img\":\"" + list.get(i).getImg() + "\""
 				+ "}";
 			if(i < list.size()-1 )
 				json+=", ";

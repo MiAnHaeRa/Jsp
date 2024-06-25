@@ -104,18 +104,18 @@
 
     <h3>ajax 연습</h3>
     <div id="register">
-        <table class="table">
+        <table class="table" border="1" style="width: 600px; margin: 0 auto;">
             <tr>
                 <th>아이디</th>
-                <td><input type="text" id="uid"></td>
+                <td><input class="form-control" type="text" id="uid"></td>
             </tr>
             <tr>
                 <th>비밀번호</th>
-                <td><input type="password" id="upw"></td>
+                <td><input class="form-control" type="password" id="upw"></td>
             </tr>
             <tr>
                 <th>이름</th>
-                <td><input type="text" id="uname"></td>
+                <td><input class="form-control" type="text" id="uname"></td>
             </tr>
             <tr>
                 <th>권한</th>
@@ -128,7 +128,7 @@
             </tr>
             <tr>
                 <th>파일</th>
-                <td><input type="file" id="myImg"></td>
+                <td><input class="form-control" type="file" id="myImg"></td>
             </tr>
             <tr>
                 <td colspan="2">
@@ -138,15 +138,16 @@
             </tr>
         </table>
     </div>
-
+    <br>
     <div id="show">
-        <table class="table">
+        <table class="table" border="1">
             <thead>
                 <tr>
                     <th>아이디</th>
                     <th>이름</th>
                     <th>비밀번호</th>
                     <th>권한</th>
+                    <th>이미지</th>
                     <th>삭제버튼</th>
                 </tr>
             </thead>
@@ -166,7 +167,7 @@
             <div class="modal-body">
                 <input type="hidden" id="modify_id">
                 <p>이름 : <input type="text" id="modify_name"></p>
-                <p>비밀번호 : <input type="text" id="modify_pass"></p>
+                <p>비밀번호 : <input type="password" id="modify_pass"></p>
                 <p><button type="button" id="modifyBtn" class="btn btn-primary">수정</button></p>
             </div>
             <div class="modal-footer">

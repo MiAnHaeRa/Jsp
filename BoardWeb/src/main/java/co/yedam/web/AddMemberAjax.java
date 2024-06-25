@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -14,18 +16,15 @@ import co.yedam.service.BoardService;
 import co.yedam.service.BoardServiceImpl;
 import co.yedam.vo.MemberVO;
 
-public class RegistControl implements Control {
+public class AddMemberAjax implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//파일첨부일 경우에는 multipart 요청을 처리
-		//Multipart 요청(1.요청정보 2.저장위치 3.최대크기 4.인코딩 5.리네임정책)
 		String savePath = req.getServletContext().getRealPath("images");
 		int maxSize = 1024 * 1024 * 5;	//5MB
 		String encording = "utf-8";
 		
 		MultipartRequest mr = new MultipartRequest(req, savePath, maxSize, encording, new DefaultFileRenamePolicy());
-		
 		String id = mr.getParameter("id");
 		String pw = mr.getParameter("pw");
 		String name = mr.getParameter("name");
@@ -44,17 +43,22 @@ public class RegistControl implements Control {
 		mvo.setImg(img);
 		
 		BoardService svc = new BoardServiceImpl();
+
 		try {
 			if(svc.addMemberImg(mvo)) {
-				System.out.println("회원가입 성공");
-				req.getRequestDispatcher("member/loginForm.tiles").forward(req, resp);
+				if(req.getMethod().equals("POST")) {
+					resp.sendRedirect("memberList.do");
+				} else if(req.getMethod().equals("PUT")){
+					resp.getWriter().print("{\"retCode\" : \"OK\" }");
+				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("회원가입 실패");
-			resp.sendRedirect("member/registForm.tiles");
+			if(req.getMethod().equals("PUT")) {
+				resp.getWriter().print("{\"retCode\" : \"NG\" }");
+				e.printStackTrace();
+			}
 		}
-
+		
 	}
 
 }

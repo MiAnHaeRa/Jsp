@@ -10,6 +10,30 @@
 <body>
     <p>Promise 객체</p>
     <script>
+        async function upload(formData) {
+            try {
+                const response = await fetch("", {
+                    method: "PUT",
+                    body: formData,
+                });
+                const result = await response.json();
+                console.log("성공:", result);
+            } catch (error) {
+                console.error("실패:", error);
+            }
+        }
+
+        const formData = new FormData();
+        formData.append('id', 'abc123');
+        formData.append('pw', 'abc123');
+        const fileField = document.querySelector('input[type="file"]');
+
+        formData.append("username", "abc123");
+        formData.append("avatar", fileField.files[0]);
+
+        upload(formData);
+    </script>
+    <script>
         async function promiseFuc() {
             const promise = await new Promise((resolve, reject) => {
                 //정상적 실행 -> resolve 실행

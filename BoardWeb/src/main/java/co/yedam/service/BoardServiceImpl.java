@@ -55,6 +55,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public List<MemberVO> selectMember() {
+		// TODO Auto-generated method stub
+		return mapper.selectMemberAll();
+	}
+	
+	@Override
 	public MemberVO checkMember(String id, String pw) {
 		return mapper.selectMember(id, pw);
 	}

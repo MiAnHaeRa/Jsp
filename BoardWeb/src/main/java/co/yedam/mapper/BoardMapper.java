@@ -20,6 +20,7 @@ public interface BoardMapper {
 	BoardVO selectBoard(int bno);
 	
 	//회원id, 회원비번
+	List<MemberVO> selectMemberAll();
 	MemberVO selectMember(@Param("id") String id, @Param("pw") String pw);
 	int insertMember(MemberVO mvo);
 	int checkId(String id);

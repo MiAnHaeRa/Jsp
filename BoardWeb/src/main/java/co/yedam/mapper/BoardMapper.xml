@@ -84,6 +84,11 @@
 	</delete>
 	
 	<!-- 회원관련 -->
+	<select id="selectMemberAll" resultType="co.yedam.vo.MemberVO">
+		select user_id, user_pw, user_name, responsibility, img 
+		from member
+	</select>
+	
 	<select id="selectMember" resultType="co.yedam.vo.MemberVO">
 		select * 
 		from member 

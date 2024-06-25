@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Control;
 import co.yedam.web.AddBoardForm;
+import co.yedam.web.AddMemberAjax;
 import co.yedam.web.AddReply;
 import co.yedam.web.AddStudent;
 import co.yedam.web.AjaxForm;
@@ -94,6 +95,7 @@ public class FrontController extends HttpServlet {
 		map.put("/checkIdAjax.do", new CheckIdAjax());
 		map.put("/deleteAjax.do", new MemberDelAjax());
 		map.put("/updateAjax.do", new MemberUpdateAjax());
+		map.put("/addMember.do", new AddMemberAjax());
 		
 		//댓글관련
 		map.put("/replyListJson.do", new ReplyList());
